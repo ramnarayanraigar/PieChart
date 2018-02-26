@@ -1,0 +1,57 @@
+<html>
+<head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'ITEM');
+      data.addColumn('number', 'VALUE');
+      data.addRows([
+        ['Total Enquiry', Android.getNum1()],
+        ['Enquiry Processing', Android.getNum2()],
+        ['Enquiry Completed', Android.getNum3()],
+        ['Enquiry Drop', Android.getNum4()],
+        ['Enquiry Pending', Android.getNum5()],
+        ['Enquiry Today', Android.getNum6()],
+         ['Web Added', Android.getNum7()],
+        ['Operator Added', Android.getNum8()],
+        ['Admin Added', Android.getNum9()],
+
+      ]);
+
+      // Set chart options
+      var options = {
+                     chartArea:{left:10,top:10,width:"100%",height:"80%"},
+               'legend': {'position': 'bottom'},
+                     'title':' ',
+                     'width':Android.getNum10() - 20,
+                     'height':Android.getNum10() - 20,
+                     'fontSize':16,
+                     'marginBottom':10};
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+<!--Div that will hold the pie chart-->
+<div id="chart_div" style="width:Android.getNum10() - 20; height:Android.getNum10() - 20;"></div>
+</body>
+</html>
